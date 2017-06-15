@@ -37,7 +37,7 @@ class SearchViewController: UIViewController {
     
     // MARK: 懒加载属性
     lazy var titleTableView : UITableView = {
-        let titleTableView = UITableView(frame: CGRect.zero, style: .grouped)
+        let titleTableView = UITableView(frame: CGRect.zero, style: .plain)
         titleTableView.backgroundColor = UIColor(white: 0.9, alpha: 1)
         titleTableView.delegate = self
         titleTableView.dataSource = self
@@ -79,11 +79,6 @@ extension SearchViewController{
     
     func setData(){
         
-        /*
-         _allDataSource = [HCSortString sortAndGroupForArray:_dataSource PropertyName:"name"];
-         _indexDataSource = [HCSortString sortForStringAry:[_allDataSource allKeys]];
-         */
-        
         dataSource = ["九寨沟","鼓浪屿","香格里拉","千岛湖","西双版纳","+-*/","故宫","上海科技馆","东方明珠","外滩","CapeTown","The Grand Canyon","4567.com","长江","江长","长江1号","&*>?","弯弯月亮","that is it ?","山水之间","倩女幽魂","疆土无边","荡秋千"]
         searchDataSource = Array()
         allDataSource = WHSortString.sortAndGroupForArray(ary: dataSource, PropertyName: "name")
@@ -101,10 +96,6 @@ extension SearchViewController{
 
 // MARK: - TableViewDelegate
 extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.1
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if (!self.searchController.isActive) {
@@ -192,7 +183,6 @@ extension SearchViewController : UITableViewDelegate,UITableViewDataSource{
         
     }
     
-
 }
 
 
@@ -202,9 +192,7 @@ extension SearchViewController : UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         
     }
-
-    
-    
+  
 }
 
 
